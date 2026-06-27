@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2463eb;
+  --primary-foreground: #f8fafc;
+  --secondary: #eef2ff;
+  --secondary-foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #e75e50;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2463eb;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #0a121c;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #2463eb;
+  --primary-foreground: #f8fafc;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #e75e50;
+  --accent-foreground: #f8fafc;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #334155;
+  --input: #334155;
+  --ring: #2463eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--foreground);
+}
+
+.container-section {
+  position: relative;
+  width: 100%;
+  padding-block: 2rem;
+}
+
+.font-display {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.hover-card {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(36, 99, 235, 0.16);
+}
+
+.text-dark {
+  color: var(--foreground);
+}
+
+.cursor-blink,
+.animate-caret-blink {
+  animation: caret-blink 1s steps(2, end) infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 700ms ease both;
+}
+
+.animate-slide-in {
+  animation: slide-in 800ms ease both;
+}
+
+.animate-fadeUp {
+  animation: fade-up 800ms ease both;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-in {
+  animation: enter 180ms ease-out both;
+}
+
+.fade-in {
+  --enter-opacity: 0;
+}
+
+.scale-in {
+  --enter-scale: 0.96;
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+.capsule-border {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+
+.snake {
+  fill: none;
+  stroke: url(#snakeGradient);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  animation: snake-border 6s linear infinite;
+}
+
+.title-text {
+  fill: url(#textGradient);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0;
+  }
+}
+
+@keyframes snake-border {
+  0% {
+    stroke-dashoffset: 520;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: var(--enter-opacity, 0);
+    transform: scale(var(--enter-scale, 1));
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(420%);
+  }
+}
+
+.animate-\[loading_1\.2s_infinite\] {
+  animation: loading 1.2s infinite;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 3px solid var(--ring) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ring) 22%, transparent) !important;
+}
+
+.open-to-work-dot {
+  animation: open-to-work-pulse 1.5s ease-in-out infinite;
+}
+
+.connect-hand-float {
+  animation: connect-hand-float 2s ease-in-out infinite;
+}
+
+.skills-marquee {
+  animation: skills-marquee 18s linear infinite;
+  will-change: transform;
+}
+
+@keyframes open-to-work-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(231, 94, 80, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(231, 94, 80, 0.15);
+  }
+}
+
+@keyframes connect-hand-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes skills-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-blink,
+  .animate-caret-blink,
+  .animate-fade-in,
+  .animate-slide-in,
+  .animate-fadeUp,
+  .animate-pulse-slow,
+  .open-to-work-dot,
+  .connect-hand-float,
+  .skills-marquee,
+  .github-border-snake,
+  .snake {
+    animation: none !important;
+  }
+}
+
+.github-border-base {
+  fill: none;
+  stroke: color-mix(in srgb, var(--primary) 25%, transparent);
+  stroke-width: 1.5;
+}
+
+.github-border-snake {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 70 520;
+  stroke-dashoffset: 0;
+  animation: github-snake-border 2.8s linear infinite;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--primary) 55%, transparent));
+}
+
+@keyframes github-snake-border {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -590;
+  }
+}
