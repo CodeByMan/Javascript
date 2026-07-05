@@ -71,9 +71,9 @@ export default function HeroSection() {
                 View Projects <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
-            <Button
+            {/* <Button
               asChild
-              variant="outline"
+              variant="ghost"
               size="lg"
               className="gap-2 rounded-md font-semibold"
             >
@@ -83,10 +83,10 @@ export default function HeroSection() {
               >
                 <Download className="h-4 w-4" /> Download CV
               </a>
-            </Button>
+            </Button> */}
             <Button
               asChild
-              variant="ghost"
+              variant="outline"
               size="lg"
               className="gap-2 rounded-md font-semibold"
             >

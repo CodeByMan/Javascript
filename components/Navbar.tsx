@@ -17,8 +17,8 @@ const navLinks = [
   { name: "Contact", to: "contact" },
 ];
 
-const RESUME_URL =
-  "/Resume_MERN_Stack Developer_NextJS_Muhammad_Ali_Nawaz_2026.pdf";
+// const RESUME_URL =
+//   "/Resume_MERN_Stack Developer_NextJS_Muhammad_Ali_Nawaz_2026.pdf";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -226,7 +226,7 @@ export default function Navbar() {
           <div className="flex flex-1 items-center justify-end gap-3">
             {/* Desktop Actions */}
             <div className="hidden items-center gap-3 lg:flex">
-              <Button
+              {/* <Button
                 asChild
                 variant="outline"
                 size="sm"
@@ -236,7 +236,7 @@ export default function Navbar() {
                   Resume
                   <Download aria-hidden="true" className="h-4 w-4" />
                 </a>
-              </Button>
+              </Button> */}
 
               <ThemeToggle />
             </div>
@@ -301,7 +301,7 @@ export default function Navbar() {
               );
             })}
 
-            <Button
+            {/* <Button
               asChild
               className="mt-2 w-full rounded-md gap-2 font-semibold"
             >
@@ -309,7 +309,7 @@ export default function Navbar() {
                 Resume
                 <Download aria-hidden="true" className="h-4 w-4" />
               </a>
-            </Button>
+            </Button> */}
           </div>
         </nav>
       )}

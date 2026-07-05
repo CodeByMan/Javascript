@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const roles = ["MERN Stack Developer", "Next.js Developer", "MEAN Stack Developer", "React.js Developer", "Node.js Developer", "Nest.js Developer"];
+const roles = ["MERN Stack Developer", "MEAN Stack Developer", "Next.js Developer", "React.js Developer", "Node.js Developer", "Nest.js Developer"];
 
 export default function TypingRoles() {
   const [text, setText] = useState("");
