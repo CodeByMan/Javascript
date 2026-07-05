@@ -15,7 +15,7 @@ const Preloader = () => {
 
         {/* Role */}
         <p className="relative tracking-wide text-muted-foreground">
-          MERN Stack Developer · Next.js Developer
+          MERN Stack Developer · Next.js Developer · MEAN Stack Developer
         </p>
 
         {/* Loader */}

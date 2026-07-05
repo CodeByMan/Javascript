@@ -15,7 +15,7 @@ export default function Footer() {
               Muhammad Ali Nawaz
             </Link>
             <p className="text-muted-foreground text-sm mt-1.5 max-w-xs md:max-w-md">
-              MERN Stack Developer · Next.js Developer
+              MERN Stack Developer · Next.js Developer · MEAN Stack Developer
             </p>
           </div>
 
