@@ -467,7 +467,7 @@ export default function AliGPT() {
           />
         </span>
         <span className={styles.launcherTooltip}>
-          {"Explore Ali's Portfolio"}
+          {"Ask AliGPT"}
         </span>
       </button>
     </div>

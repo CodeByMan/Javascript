@@ -34,7 +34,7 @@ export const education = [
     institute: "Aptech Computer Education, Karachi",
     degree: "Advanced Diploma in Software Engineering",
     duration: "July 2023 - July 2026",
-    result: "Grade A",
+    result: "Passed",
     description:
       "Comprehensive software engineering diploma focusing on full-stack development, programming fundamentals, databases, and real-world project development using modern technologies.",
     logo: "/aptech.jpg",
