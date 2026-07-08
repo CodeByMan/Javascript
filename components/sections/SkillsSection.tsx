@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { skillCategories as categories, sliderSkills } from "@/data/portfolio";
+import { GiBearHead } from "react-icons/gi";
 
 import {
   FaHtml5,
@@ -23,7 +24,6 @@ import {
   FaSearch,
   FaBolt,
   FaCodeBranch,
-  FaTasks,
   FaProjectDiagram,
   FaFileWord,
   FaFileExcel,
@@ -61,9 +61,26 @@ import {
   SiRedux,
   SiVite,
   SiNestjs,
+  SiUbuntu,
+  SiN8N,
+  SiSocketdotio,
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
+import { DiMsqlServer } from "react-icons/di";
+import {
+  TbApi,
+  TbArrowsShuffle,
+  TbBucket,
+  TbDatabaseSearch,
+  TbFileSearch,
+  TbLambda,
+  TbLink,
+  TbPlugConnected,
+  TbRepeat,
+  TbServer2,
+  TbSettingsSearch,
+} from "react-icons/tb";
 import { MdOutlineExtension } from "react-icons/md";
 
 // ======================================================
@@ -96,6 +113,10 @@ const skillDataMap: Record<string, SkillData> = {
   Angular: { icon: <FaAngular />, color: "#DD0031" },
   Redux: { icon: <SiRedux />, color: "#764ABC" },
   Vite: { icon: <SiVite />, color: "#646CFF" },
+  Zustand: {
+  icon: <GiBearHead />,
+  color: "#443E38",
+},
 
   // BACKEND
   Node: { icon: <FaNodeJs />, color: "#339933" },
@@ -106,7 +127,7 @@ const skillDataMap: Record<string, SkillData> = {
   "Nest.js": { icon: <SiNestjs />, color: "#E0234E" },
   FastAPI: { icon: <SiFastapi />, color: "#009688" },
   Python: { icon: <SiPython />, color: "#3776AB" },
-  "RESTful API": { icon: <FaExchangeAlt />, color: "#2563EB" },
+  "RESTful API": { icon: <TbApi />, color: "#2563EB" },
   GraphAPI: { icon: <SiGraphql />, color: "#E10098" },
   GraphQL: { icon: <SiGraphql />, color: "#E10098" },
   Stripe: { icon: <SiStripe />, color: "#635BFF" },
@@ -115,15 +136,16 @@ const skillDataMap: Record<string, SkillData> = {
   "MERN + AI": { icon: <SiOpenai />, color: "#10A37F" },
   "MEAN + AI": { icon: <SiOpenai />, color: "#10A37F" },
   "Next.js + AI": { icon: <SiOpenai />, color: "#10A37F" },
-  "Third-party API": { icon: <FaExchangeAlt />, color: "#2563EB" },
+  "Third-party API": { icon: <TbPlugConnected />, color: "#2563EB" },
   "Third-party API Integration": { icon: <FaExchangeAlt />, color: "#2563EB" },
+  "Socket.IO": { icon: <SiSocketdotio />, color: "#010101" },
   "Third-party APIs": { icon: <FaExchangeAlt />, color: "#2563EB" },
 
   // DATABASES
   MongoDB: { icon: <SiMongodb />, color: "#47A248" },
   "MongoDB Atlas": { icon: <SiMongodb />, color: "#47A248" },
   Mongoose: { icon: <FaDatabase />, color: "#880000" },
-  "SQL Server": { icon: <FaDatabase />, color: "#CC2927" },
+  "SQL Server": { icon: <DiMsqlServer />, color: "#CC2927" },
   MySQL: { icon: <SiMysql />, color: "#4479A1" },
   PostgreSQL: { icon: <SiPostgresql />, color: "#336791" },
   Firebase: { icon: <SiFirebase />, color: "#FFCA28" },
@@ -131,20 +153,21 @@ const skillDataMap: Record<string, SkillData> = {
 
   // CLOUD, DATA ENGINEERING & DEVOPS
   AWS: { icon: <FaAws />, color: "#FF9900" },
-  "AWS S3": { icon: <FaCloudUploadAlt />, color: "#569A31" },
-  "AWS EC2": { icon: <FaServer />, color: "#FF9900" },
+  "AWS S3": { icon: <TbBucket />, color: "#569A31" },
+  "AWS EC2": { icon: <TbServer2 />, color: "#FF9900" },
   "AWS SNS": { icon: <FaBell />, color: "#DD344C" },
   "AWS SQS": { icon: <FaExchangeAlt />, color: "#FF4F8B" },
-  "AWS Glue": { icon: <FaProjectDiagram />, color: "#2563EB" },
-  Athena: { icon: <FaSearch />, color: "#CA8A04" },
+  "AWS Glue": { icon: <TbArrowsShuffle />, color: "#2563EB" },
+  Athena: { icon: <TbDatabaseSearch />, color: "#CA8A04" },
   Lambda: { icon: <FaBolt />, color: "#FF9900" },
-  "AWS Lambda": { icon: <FaBolt />, color: "#FF9900" },
+  "AWS Lambda": { icon: <TbLambda />, color: "#FF9900" },
   "AWS Console": { icon: <FaAws />, color: "#FF9900" },
   Linux: { icon: <FaServer />, color: "#FCC624" },
-  Ubuntu: { icon: <FaServer />, color: "#E95420" },
+  Ubuntu: { icon: <SiUbuntu />, color: "#E95420" },
   Kafka: { icon: <SiApachekafka />, color: "#111111" },
   "Apache Airflow": { icon: <SiApacheairflow />, color: "#017CEE" },
   Docker: { icon: <FaDocker />, color: "#2496ED" },
+  n8n: { icon: <SiN8N />, color: "#EA4B71" },
   "CI/CD Pipeline": { icon: <SiGithubactions />, color: "#2088FF" },
   "CI/CD Pipelines": { icon: <SiGithubactions />, color: "#2088FF" },
   Vercel: { icon: <SiVercel />, color: "#111111" },
@@ -160,11 +183,11 @@ const skillDataMap: Record<string, SkillData> = {
   Postman: { icon: <SiPostman />, color: "#FF6C37" },
   "Thunder Client": { icon: <FaBolt />, color: "#6D5DF2" },
   SEO: { icon: <SiGooglesearchconsole />, color: "#22C55E" },
-  "On-page SEO": { icon: <SiGooglesearchconsole />, color: "#22C55E" },
-  "Off-page SEO": { icon: <SiGooglesearchconsole />, color: "#16A34A" },
-  "Technical SEO": { icon: <SiGooglesearchconsole />, color: "#15803D" },
+  "On-page SEO": { icon: <TbFileSearch />, color: "#22C55E" },
+  "Off-page SEO": { icon: <TbLink />, color: "#16A34A" },
+  "Technical SEO": { icon: <TbSettingsSearch />, color: "#15803D" },
   Grammarly: { icon: <SiGrammarly />, color: "#15C39A" },
-  "Agile Methodologies": { icon: <FaTasks />, color: "#8B5CF6" },
+  "Agile Methodologies": { icon: <TbRepeat />, color: "#8B5CF6" },
   "Ms Word": { icon: <FaFileWord />, color: "#2B579A" },
   "MS Word": { icon: <FaFileWord />, color: "#2B579A" },
   "Ms Excel": { icon: <FaFileExcel />, color: "#217346" },

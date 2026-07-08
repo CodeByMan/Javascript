@@ -26,7 +26,7 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/muhammad-ali-nawaz-362627338/",
   github: "https://github.com/CodeByMan",
   message:
-    "I'm available for full-time roles and freelance projects involving MERN Stack, Next.js, MEAN Stack, APIs, real-time features, AI integrations, automation, and cloud-supported solutions. Whether it's building new features, improving existing systems, or solving technical problems, I'm ready to contribute.",
+    "I'm available for full-time roles and freelance projects involving MERN Stack, Next.js, MEAN Stack, APIs, real-time features, AI integrations, automation, and cloud-supported solutions. Whether it's building new features, improving existing systems, integrating third-party services, optimizing performance, or solving technical problems, I'm ready to contribute with a reliable and solution-focused approach.",
 };
 
 export const education = [
@@ -226,6 +226,7 @@ export const skillCategories = [
       "React",
       "Next.js",
       "Angular",
+      "Zustand",
       "Tailwind CSS",
       "Material UI",
       "Bootstrap",
@@ -243,6 +244,7 @@ export const skillCategories = [
       "Thunder Client",
       "GraphQL",
       "Stripe",
+      "Socket.IO",
       "Third-party API",
       "AI Integration",
       "FastAPI",
@@ -271,6 +273,7 @@ export const skillCategories = [
       "Ubuntu",
       "CI/CD Pipelines",
       "Docker",
+      "n8n",
       "Apache Airflow",
       "Kafka",
     ],

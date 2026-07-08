@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Check, Send, Loader } from "lucide-react"; // added Loader
+import { Check, Send, Loader } from "lucide-react";
 
 import {
   Form,
@@ -76,7 +76,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full min-w-0">
 
       {/* PREMIUM SUCCESS POPUP */}
       {success && (
@@ -104,7 +104,7 @@ export default function ContactForm() {
       )}
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full min-w-0 space-y-6">
 
           {/* COMPANY NAME FIELD */}
           <FormField
@@ -150,8 +150,9 @@ export default function ContactForm() {
                 <FormControl>
                   <Textarea
                     placeholder="Type your message here..."
+                    rows={6}
                     {...field}
-                    className="min-h-32"
+                    className="contact-message-textarea"
                   />
                 </FormControl>
                 <FormMessage />
@@ -162,13 +163,14 @@ export default function ContactForm() {
           <Button type="submit" className="w-full" disabled={loading}>
             <span className="flex items-center gap-2">
               {loading ? (
-                <Loader className="h-4 w-4 animate-spin" /> // bars loader while sending
+                <Loader className="h-4 w-4 animate-spin" />
               ) : (
                 <Send className="h-4 w-4" />
               )}
               {loading ? "Sending..." : "Send Message"}
             </span>
           </Button>
+
         </form>
       </Form>
     </div>

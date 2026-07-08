@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { AlertCircle, Mail, Phone } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
@@ -28,7 +28,7 @@ export default function ContactSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="Contact"
-          title="Let’s Work Together"
+          title="Let's Work Together"
           subtitle="Feel free to reach out for MERN Stack or Next.js internships, junior roles, freelance work, backend API development, AI integrations, or project collaboration."
           alignment="center"
         />
@@ -81,11 +81,79 @@ export default function ContactSection() {
 
               <div className="mt-2 h-[2px] w-20 rounded-full bg-gradient-to-r from-primary to-[#e75e50]" />
 
-              <div className="mt-5 w-full min-w-0 overflow-hidden">
+              <div
+                className="
+                  mt-5
+                  w-full
+                  min-w-0
+                  overflow-visible
+                  px-px
+
+                  [&_form]:w-full
+                  [&_form]:min-w-0
+
+                  [&_input]:box-border
+                  [&_input]:w-full
+                  [&_input]:max-w-full
+                  [&_input]:transition-[border-color,box-shadow]
+                  [&_input]:duration-200
+                  [&_input:hover]:border-primary/60
+                  [&_input:focus]:border-primary
+                  [&_input:focus-visible]:border-primary
+
+                  [&_textarea]:box-border
+                  [&_textarea]:w-full
+                  [&_textarea]:max-w-full
+                  [&_textarea]:transition-[border-color,box-shadow]
+                  [&_textarea]:duration-200
+                  [&_textarea:hover]:border-primary/60
+                  [&_textarea:focus]:border-primary
+                  [&_textarea:focus-visible]:border-primary
+                "
+              >
                 <ContactForm />
               </div>
             </div>
           </div>
+
+      <div
+        role="note"
+        className="
+          relative z-10
+          mt-6
+          flex
+          w-full
+          min-w-0
+          items-center
+          justify-center
+          gap-3
+          rounded-lg
+          border border-primary/20
+          bg-primary/5
+          px-4 py-3
+          text-center
+          text-sm
+          font-semibold
+          leading-relaxed
+          text-foreground
+          sm:mt-8
+          sm:gap-4
+          sm:px-5
+          sm:text-base
+          lg:mt-10
+          lg:text-[12px]
+        "
+      >
+        <AlertCircle
+          className="h-5 w-5 shrink-0 text-primary"
+          aria-hidden="true"
+        />
+
+        <p className="min-w-0">
+          If you experience any difficulty submitting the form, please contact me
+          directly by email or phone for prompt assistance.
+        </p>
+      </div>
         </div>
       </div>
     </section>

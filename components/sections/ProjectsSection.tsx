@@ -165,9 +165,9 @@ export default function ProjectsSection() {
             />
           </svg>
           <span className="relative z-10">View all projects on GitHub</span>
-          <span className="relative z-10 inline-flex transition-transform duration-300 group-hover:translate-x-2">
+          {/* <span className="relative z-10 inline-flex transition-transform duration-300 group-hover:translate-x-2">
             →
-          </span>
+          </span> */}
         </a>
       </div>
     </section>

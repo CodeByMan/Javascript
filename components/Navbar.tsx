@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Download, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -15,7 +15,9 @@ const navLinks = [
   { name: "Education", to: "education" },
   { name: "Certification", to: "certification" },
   { name: "Contact", to: "contact" },
-];
+] as const;
+
+const ACTIVE_SECTION_GAP = 24;
 
 // const RESUME_URL =
 //   "/Resume_MERN_Stack Developer_NextJS_Muhammad_Ali_Nawaz_2026.pdf";
@@ -31,8 +33,8 @@ export default function Navbar() {
 
   const closeMenu = () => setIsOpen(false);
 
-  // Keep the translucent header state in sync without running layout work on
-  // every scroll event.
+  // Keep the translucent header state in sync without running state updates
+  // repeatedly during the same animation frame.
   useEffect(() => {
     let animationFrameId: number | null = null;
 
@@ -59,8 +61,9 @@ export default function Navbar() {
     };
   }, []);
 
-  // Observe sections instead of recalculating every section's position during
-  // every scroll event.
+  // Use one deterministic activation line below the fixed navbar.
+  // The active link is always the last section whose top has crossed that line.
+  // This avoids IntersectionObserver callback-order and stale-entry problems.
   useEffect(() => {
     const sections = navLinks
       .map((link) => document.getElementById(link.to))
@@ -68,25 +71,73 @@ export default function Navbar() {
 
     if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const mostVisibleSection = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    let animationFrameId: number | null = null;
 
-        if (mostVisibleSection?.target.id) {
-          setActiveSection(mostVisibleSection.target.id);
+    const updateActiveSection = () => {
+      const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 0;
+      const activationPoint =
+        window.scrollY + headerHeight + ACTIVE_SECTION_GAP + 1;
+
+      let nextActiveSection = sections[0].id;
+
+      for (const section of sections) {
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+        if (sectionTop <= activationPoint) {
+          nextActiveSection = section.id;
+        } else {
+          break;
         }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.1, 0.25, 0.5, 0.75],
       }
-    );
 
-    sections.forEach((section) => observer.observe(section));
+      // Keep the final navigation item active near the document bottom, even
+      // when content after the last tracked section is still visible.
+      const isAtPageBottom =
+        Math.ceil(window.scrollY + window.innerHeight) >=
+        document.documentElement.scrollHeight - 2;
 
-    return () => observer.disconnect();
+      if (isAtPageBottom) {
+        nextActiveSection = sections[sections.length - 1].id;
+      }
+
+      setActiveSection((currentSection) =>
+        currentSection === nextActiveSection
+          ? currentSection
+          : nextActiveSection
+      );
+
+      animationFrameId = null;
+    };
+
+    const requestActiveSectionUpdate = () => {
+      if (animationFrameId !== null) return;
+
+      animationFrameId = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    const resizeObserver = new ResizeObserver(requestActiveSectionUpdate);
+
+    sections.forEach((section) => resizeObserver.observe(section));
+
+    if (headerRef.current) {
+      resizeObserver.observe(headerRef.current);
+    }
+
+    updateActiveSection();
+    window.addEventListener("scroll", requestActiveSectionUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", requestActiveSectionUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestActiveSectionUpdate);
+      window.removeEventListener("resize", requestActiveSectionUpdate);
+      resizeObserver.disconnect();
+
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, []);
 
   // Focus the first mobile link when the menu opens. Escape closes the menu
@@ -149,6 +200,9 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (!element) return;
 
+    setActiveSection(id);
+    window.history.replaceState(null, "", `#${id}`);
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -177,6 +231,10 @@ export default function Navbar() {
             <Link
               href="/#home"
               aria-label="Go to the home section"
+              onClick={(event) => {
+                event.preventDefault();
+                handleScrollTo("home");
+              }}
               className="text-xl font-display font-bold text-gradient"
             >
               M.A.N
@@ -195,7 +253,7 @@ export default function Navbar() {
                 <a
                   key={link.to}
                   href={`#${link.to}`}
-                  aria-current={isActive ? "page" : undefined}
+                  aria-current={isActive ? "location" : undefined}
                   onClick={(event) => {
                     event.preventDefault();
                     handleScrollTo(link.to);
@@ -234,7 +292,6 @@ export default function Navbar() {
               >
                 <a href={RESUME_URL} download>
                   Resume
-                  <Download aria-hidden="true" className="h-4 w-4" />
                 </a>
               </Button> */}
 
@@ -284,7 +341,7 @@ export default function Navbar() {
                   key={link.to}
                   ref={index === 0 ? firstMobileLinkRef : undefined}
                   href={`#${link.to}`}
-                  aria-current={isActive ? "page" : undefined}
+                  aria-current={isActive ? "location" : undefined}
                   onClick={(event) => {
                     event.preventDefault();
                     handleScrollTo(link.to);
@@ -307,7 +364,6 @@ export default function Navbar() {
             >
               <a href={RESUME_URL} download onClick={closeMenu}>
                 Resume
-                <Download aria-hidden="true" className="h-4 w-4" />
               </a>
             </Button> */}
           </div>

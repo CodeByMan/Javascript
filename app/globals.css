@@ -21,6 +21,7 @@
   --input: #e2e8f0;
   --ring: #2463eb;
   --radius: 0.75rem;
+  --navbar-scroll-offset: 5.5rem;
 }
 
 .dark {
@@ -75,6 +76,17 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-scroll-offset);
+}
+
+#home,
+#skills,
+#experience,
+#projects,
+#education,
+#certification,
+#contact {
+  scroll-margin-top: var(--navbar-scroll-offset);
 }
 
 body {
@@ -403,3 +415,29 @@ summary:focus-visible,
     stroke-dashoffset: -590;
   }
 }
+
+/* Contact form message box
+   Uses an explicit semantic class instead of competing Tailwind min-height
+   utilities from both ContactForm and the shared Textarea component. */
+.contact-message-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 10.5rem;
+  min-height: 10.5rem;
+  resize: vertical;
+}
+
+@media (min-width: 640px) {
+  .contact-message-textarea {
+    height: 11rem;
+    min-height: 11rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-message-textarea {
+    height: 12rem;
+    min-height: 12rem;
+  }
+}
+

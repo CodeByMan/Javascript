@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import TypingRoles from "@/components/TypingRoles";
